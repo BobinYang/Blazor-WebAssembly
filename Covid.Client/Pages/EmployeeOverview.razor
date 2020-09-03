@@ -1,0 +1,41 @@
+﻿@page "/employeeoverview"
+@inherits EmployeeOverviewBase
+
+<h1>Employee Overview</h1>
+
+<table class="table table-hover table-striped">
+    <thead class="thead-dark">
+    <tr>
+        <th>ID</th>
+        <th>部门</th>
+        <th>姓名</th>
+        <th>出生日期</th>
+        <th>性别</th>
+        <th>操作</th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var em in Employees)
+    {
+        <tr>
+            <td>@em.Id</td>
+            <td>@em.DepartmentId</td>
+            <td>@em.Name</td>
+            <td>@em.BirthDate</td>
+            <td>@em.Gender</td>
+            <td>
+                <a href="@($"employeedetail/{em.Id}")" class="btn btn-primary btn-sm">
+                    Detail
+                </a>
+                |
+                <a href="@($"employeeedit/{em.DepartmentId}/{em.Id}")" class="btn btn-primary btn-sm">
+                    Edit
+                </a>
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>
+
+<button class="btn btn-primary" @onclick="@SayHello">Say Hello</button>
+<h2>@Result</h2>
